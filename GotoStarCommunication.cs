@@ -463,25 +463,29 @@ namespace ASCOM.GotoStar
                                 case GuideDirections.guideEast:
                                     eastGuideBusy = true;
                                     eastGuideTimer =
-                                        new System.Threading.Timer(new TimerCallback(OnEastGuideTimer), null, 0, duration);
+                                        new System.Threading.Timer(new TimerCallback(OnEastGuideTimer), null, duration, duration);
+                                    Log.Debug("- Started guiding East. ({0} ms)", duration);
                                     success = true;
                                     break;
                                 case GuideDirections.guideNorth:
                                     northGuideBusy = true;
                                     northGuideTimer =
-                                        new System.Threading.Timer(new TimerCallback(OnNorthGuideTimer), null, 0, duration);
+                                        new System.Threading.Timer(new TimerCallback(OnNorthGuideTimer), null, duration, duration);
+                                    Log.Debug("- Started guiding North. ({0} ms)", duration);
                                     success = true;
                                     break;
                                 case GuideDirections.guideSouth:
                                     southGuideBusy = true;
                                     southGuideTimer =
-                                        new System.Threading.Timer(new TimerCallback(OnSouthGuideTimer), null, 0, duration);
+                                        new System.Threading.Timer(new TimerCallback(OnSouthGuideTimer), null, duration, duration);
+                                    Log.Debug("- Started guiding South. ({0} ms)", duration);
                                     success = true;
                                     break;
                                 case GuideDirections.guideWest:
                                     westGuideBusy = true;
                                     westGuideTimer =
-                                        new System.Threading.Timer(new TimerCallback(OnWestGuideTimer), null, 0, duration);
+                                        new System.Threading.Timer(new TimerCallback(OnWestGuideTimer), null, duration, duration);
+                                    Log.Debug("- Started guiding West. ({0} ms)", duration);
                                     success = true;
                                     break;
                             }// switch
@@ -856,6 +860,7 @@ namespace ASCOM.GotoStar
         private void OnEastGuideTimer(Object stateInfo)
         {
             Request(":Qe#");
+            Log.Debug("- Stopped guiding East.");
             eastGuideBusy = false;
             eastGuideTimer?.Dispose();
             eastGuideTimer = null;
@@ -864,6 +869,7 @@ namespace ASCOM.GotoStar
         private void OnNorthGuideTimer(Object stateInfo)
         {
             Request(":Qn#");
+            Log.Debug("- Stopped guiding North.");
             northGuideBusy = false;
             northGuideTimer?.Dispose();
             northGuideTimer = null;
@@ -872,6 +878,7 @@ namespace ASCOM.GotoStar
         private void OnWestGuideTimer(Object stateInfo)
         {
             Request(":Qw#");
+            Log.Debug("- Stopped guiding West.");
             westGuideBusy = false;
             westGuideTimer?.Dispose();
             westGuideTimer = null;
@@ -880,6 +887,7 @@ namespace ASCOM.GotoStar
         private void OnSouthGuideTimer(Object stateInfo)
         {
             Request(":Qs#");
+            Log.Debug("- Stopped guiding South.");
             southGuideBusy = false;
             southGuideTimer?.Dispose();
             southGuideTimer = null;

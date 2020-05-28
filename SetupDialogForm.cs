@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using ASCOM.Utilities;
 using ASCOM.GotoStar;
 using System.Threading;
+using ASCOM.DeviceInterface;
 
 namespace ASCOM.GotoStar
 {
@@ -79,8 +80,7 @@ namespace ASCOM.GotoStar
             lblTestResult.Text = gotoStar.TestConnection();
             /*
              * informal test area
-             */
-            gotoStar.GetRightAscension(out double ra);
+             */            
             gotoStar.ClosePort();
         }
 

@@ -835,14 +835,14 @@ namespace ASCOM.GotoStar
                     siderealTime += siderealTimeDT.Minute / 60.0;
                     siderealTime += siderealTimeDT.Second / 3600.0;
                     siderealTime += siderealTimeDT.Millisecond / 3600000.0;
-                    Log.Debug("SiderealTime (from mount) - Get       {0}", siderealTime);
+                    Log.Information("SiderealTime (from mount) - Get       {0}", siderealTime);
                     Log.Debug("             (computed for comparison {0})", CalculateSiderealTime());
                 }
                 else
                 {
                     siderealTime = CalculateSiderealTime();
-                    Log.Debug("SiderealTime (computed) - Get - {0}", siderealTime);
-                }
+                    Log.Information("SiderealTime (computed) - Get - {0}", siderealTime);
+                }                
                 return siderealTime;
             }
         }
